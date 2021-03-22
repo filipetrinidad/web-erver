@@ -28,10 +28,21 @@ module.exports = (app) => {
             if(err){
                 app.utils.error.send(err, req, res);
             }
-
             else{
                     res.status(200).json(user);
                 }
         })
+    });
+
+    let routeId = app.route('/users/:id');
+    routeId.get((req, res) => {
+        db.findOne({id:req.params.id}).exec((err, user) => {
+            if(err){
+                app.utils.error.send(err, req, res);
+            }
+            else{
+                    res.status(200).json(user);
+                }
+        });
     });
 };
