@@ -36,7 +36,7 @@ module.exports = (app) => {
 
     let routeId = app.route('/users/:id');
     routeId.get((req, res) => {
-        db.findOne({id:req.params.id}).exec((err, user) => {
+        db.findOne({_id:req.params.id}).exec((err, user) => {
             if(err){
                 app.utils.error.send(err, req, res);
             }
